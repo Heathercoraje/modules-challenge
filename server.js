@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const repos = require('./repos.json');
+const repos = require('./src/repos.json');
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
@@ -12,7 +12,7 @@ const handler = (req, res) => {
   console.log('URL: ', url);
 
   if (url === '/') {
-    fs.readFile(path.join(__dirname, 'fac.html'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'public/', 'fac.html'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -23,7 +23,7 @@ const handler = (req, res) => {
       }
     });
   } else if (url === '/fac') {
-    fs.readFile(path.join(__dirname, 'fac.html'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'public/', 'fac.html'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -34,7 +34,7 @@ const handler = (req, res) => {
       }
     });
   } else if (url === '/dwyl') {
-    fs.readFile(path.join(__dirname, 'dwyl.html'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'public/', 'dwyl.html'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -45,7 +45,7 @@ const handler = (req, res) => {
       }
     });
   } else if (url === '/css/stylesheet.css') {
-    fs.readFile(path.join(__dirname, 'stylesheet.css'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'public/', 'stylesheet.css'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -56,7 +56,7 @@ const handler = (req, res) => {
       }
     });
   } else if (url === '/js/request.js') {
-    fs.readFile(path.join(__dirname, 'request.js'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'src/', 'request.js'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -67,7 +67,7 @@ const handler = (req, res) => {
       }
     });
   } else if (url === '/js/index.js') {
-    fs.readFile(path.join(__dirname, 'index.js'), 'utf8', (err, file) => {
+    fs.readFile(path.join(__dirname, 'public/', 'index.js'), 'utf8', (err, file) => {
       /* istanbul ignore if */
       if (err) {
         res.writeHead(500, {'content-type': 'text/plain'});
@@ -99,4 +99,3 @@ module.exports = {
   server: server,
   handler: handler
 }
-
