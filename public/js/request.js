@@ -12,15 +12,29 @@ var request = (function () {
         }
       }
     };
+
     xhr.open(method, url);
+    console.log('initialize request');
+    console.log(method,url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(payloadString);
   };
 
-  var get = function (url, cb) { _request('GET', url, null, cb); }
-  var post = function (url, payload, cb) { _request('POST', url, payload, cb); }
-  var put = function (url, payload, cb) { _request('PUT', url, payload, cb); }
-  var del = function (url, cb) { _request('DELETE', url, null, cb); }
+  function get (url, cb) {
+    _request('GET', url, null, cb);
+  }
+
+  var post = function (url, payload, cb) {
+    _request('POST', url, payload, cb);
+   }
+
+  var put = function (url, payload, cb) {
+     _request('PUT', url, payload, cb);
+   }
+
+  var del = function (url, cb) {
+    _request('DELETE', url, null, cb);
+  }
 
   return request = {
     get: get,
@@ -29,3 +43,6 @@ var request = (function () {
     del: del
   };
 })();
+
+// by invoking the function, it builds a object with functions to be used?
+// why is that only immediate invoking works?
