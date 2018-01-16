@@ -1,6 +1,5 @@
 const http = require('http');
 const handler = require('./src/handler.js');
-console.log(handler);
 
 const server = http.createServer(handler);
 const host = process.env.HOST || 'localhost';
