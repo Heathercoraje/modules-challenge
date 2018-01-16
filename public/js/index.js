@@ -28,10 +28,14 @@
     });
   }
 
+// abstracton or object-oriented programming?
+
   request.get('/api/repos/' + view, function (err, res) {
+    console.log(view);
     if (err) {
       handleErr(err);
     } else {
+      console.log('success');
       renderRepos(res);
     }
   });
